@@ -1,0 +1,26 @@
+<h1>Quotes</h1>
+<h2><%= link_to 'Download quotes', download_quotes_path %></h2>
+<% if @quotes.present? %>
+  <table>
+    <thead>
+      <th>ID</th>
+      <th>Title</th>
+      <th>Content</th>
+      <th>Link</th>
+      <th>Custom Meta</th>
+    </thead>
+    <tbody>
+      <%@quotes.each do |quote|%>
+        <tr>
+          <td><%=quote.id%></td>
+          <td><%=quote.title%></td>
+          <td><%=quote.content.html_safe%></td>
+          <td><%=link_to quote.link, quote.link%></td>
+          <td><%=quote.custom_meta%></td>
+        </tr>
+      <%end%>
+    </tbody>
+  </table>
+<%else%>
+  <h2>These is no quote at the moment!</h2>
+<%end%>
